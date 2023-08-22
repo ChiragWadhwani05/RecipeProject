@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .main_-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .open {
+        width: 100px;
+        background-color: red;
+        height: 200px;
+        position: absolute;
+        left: 0;
+      }
+
+      .close {
+        width: 0px;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .other {
+        flex: 1;
+        background-color: purple;
+        height: 200px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <button>open and close</button>
+    <div class="main_-container">
+      <div class="open">
+        <ul>
+          <li>hello</li>
+          <li>hello</li>
+          <li>hello</li>
+          <li>hello</li>
+        </ul>
+      </div>
+      <div class="other">
+        <p>other</p>
+      </div>
+    </div>
+  </body>
+</html>

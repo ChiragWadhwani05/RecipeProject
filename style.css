@@ -1,70 +1,144 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
 body {
   font-family: 'Courier New', monospace;
-}
-/* Basic styling */
-
-.container {
   display: flex;
-  height: 100%;
-}
-
-.left-window {
-  position: relative;
-  max-width: 20%;
-  height: 100vh;
-}
-
-.left-window-contents{
-  background-color: rgb(29, 29, 29);
-
-  position: absolute;
-  padding: 20px;
-  height: 100%;
-  left: -300px;
-  transition: 0.3s ease;
-}
-
-.right-window {
-  flex: 1;
-  height: 100vh;
+  flex-direction: column;
   width: 100%;
-  color: aliceblue;
-  background-color: #252525;
-  padding: 20px;
+  height: 100%;
+}
+.header {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distributes space around elements */
+  align-items: center; /* Vertically align items */
+  background-color: #f3f3f3;
+  color: #000000;
+  padding: 10px 20px;
+  max-height: max-content;
+    
+}
+
+.navbar-menu,
+.saved-recipes {
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 20px;
+  outline: none;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Add background-color transition */
+}
+
+.navbar-menu:hover,
+.saved-recipes:hover {
+  color: white; /* Change text color on hover */
+  background-color: black; /* Change background color on hover */
+}
+
+.web-logo img {
+  width: 150px;
+}
+
+/* Apply these styles to your existing CSS or in a new stylesheet */
+.search-area {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-image: url('/Images/Food_background.jpg');
+  background-color: #2c2c2c;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  display: flex ;
   justify-content: center;
-  transition: 0.3s ease;
+  text-align: center; /* Center the content horizontally */
 }
 
-.toggle-button {
-  display: block;
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
 }
 
-.open {
-  transition: 0.3s ease;
-  visibility: visible;
-  /* opacity: 1; */
-  left: 80%;
+#search-input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
 }
-@media (min-width: 768px) {
-  .left-window-contents{
-    overflow-x: scroll;
-    position: relative;
-    /* opacity: 1; */
-    left: 0px;
-  }
 
-  .left-window {
-    width: 40%;
-  }
+.search-button {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.search-button:hover{
+background-color: #fff;
+color: #000000;
 
-  .toggle-button {
-    display: none;
-  }
+}
+
+.quote-box {
+  margin-top: 50px; /* Add space between search bar and quote */
+  position: absolute;
+  bottom: 10%;
+}
+
+.quote-text {
+  margin: 0;
+  font-style: italic;
+  font-size: 24px;
+  color: #ffffff; /* White text color */
+}
+
+.catogries {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin-top: 2px; /* Add some space from the quote */
+  height: fit-content;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #0056b3 */
+}
+
+.catogries button {
+  white-space: nowrap;
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Add background-color transition */
+}
+
+.catogries button:hover {
+  color: white; /* Change text color on hover */
+  background-color: black; /* Change background color on hover */
+}
+.catogries button:last-child {
+  margin-right: 0; /* Remove margin from the last button */
 }

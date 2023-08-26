@@ -17,7 +17,6 @@ const foodCategories=['Dessert', 'Snacks', 'Main Course',
 //   try {
 //     const response = await fetch(
 //         `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
-//       // `https://indian-food-db.herokuapp.com/api/getmealbyingredient?ingredient=${query}`);
 //     const data = await response.json();
 //     console.log(data);
 //     if (data.meals) {
@@ -39,12 +38,24 @@ const foodCategories=['Dessert', 'Snacks', 'Main Course',
 // };
 
 
-// const dummyImageURL = '/Images/food-placeholder.webp';
 const getPlaceholderImageURL = (url) => {
   return '/Images/food-placeholder.webp';
 };
-
-
+const renderRecipes = (recipes) => {
+  resultRecipes.innerHTML = '';
+  recipes.forEach((hit) => {
+    const recipe = hit.recipe;
+    const recipediv = document.createElement('section');
+    const imageUrl = recipe.image || getPlaceholderImageURL();
+    recipediv.innerHTML = `
+        <img src="${imageUrl}">
+        <div class="text-area">
+        <h3>${recipe.label}</h3>
+        <p>Calories: ${recipe.calories.toFixed(2)}</p>
+        </div>`;
+    resultRecipes.appendChild(recipediv);
+  });
+};
 const fetchEdamamData = async (query) => {
   try {
     const response = await fetch(
@@ -62,41 +73,26 @@ searchButton.addEventListener('click', async (e) => {
 
   if (searchInputValue !== '') {
     const edamamData = await fetchEdamamData(searchInputValue);
-    if (edamamData) {
+    if (edamamData && edamamData.hits.length > 0) {
       renderRecipes(edamamData.hits);
     } else {
-      resultRecipes.innerHTML = '<p>No recipes found.</p>';
+      resultRecipes.innerHTML = '<h3>No recipes found.</h3>';
     }
   } else {
-    resultRecipes.innerHTML = '<p>Please enter a search term.</p>';
+    resultRecipes.innerHTML = '<h3>Please enter a search term.</h3>';
   }
 });
-const renderRecipes = (recipes) => {
-  resultRecipes.innerHTML = ''; // Clear previous results
-  recipes.forEach((hit) => {
-    const recipe = hit.recipe;
-    const recipediv = document.createElement('section');
-    const imageUrl = recipe.image || getPlaceholderImageURL();
-    recipediv.innerHTML = `
-        <img src="${imageUrl}">
-        <div class="text-area">
-        <h3>${recipe.label}</h3>
-        <p>Calories: ${recipe.calories.toFixed(2)}</p>
-        </div>`;
-    resultRecipes.appendChild(recipediv);
-  });
-};
 
 
-searchButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  const searchInputValue = searchInput.value.trim();
-  if (searchInputValue !== '') {
-    fetchRecipies(searchInputValue);
-  } else {
-    resultRecipes.innerHTML = '<p>Please enter a search term.</p>';
-  }
-});
+// searchButton.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   const searchInputValue = searchInput.value.trim();
+//   if (searchInputValue !== '') {
+//     fetchRecipies(searchInputValue);
+//   } else {
+//     resultRecipes.innerHTML = '<p>Please enter a search term.</p>';
+//   }
+// });
 searchInput.addEventListener('keydown', (event) =>{
   if (event.key ==='Enter') {
     searchButton.click();

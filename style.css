@@ -34,6 +34,8 @@ body {
   font-size: 20px;
   outline: none;
   transition: color 0.3s ease, background-color 0.3s ease; /* Add background-color transition */
+  /* border: 1px solid #000000; */
+  border-radius: 5px;
 }
 
 .navbar-menu:hover,
@@ -51,7 +53,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  background-image: url('/Images/Food_background.jpg');
+  background-image: url('/Images/Food-Background.jpg');
   background-color: #2c2c2c;
   background-size: cover;
   background-position: center;
@@ -112,7 +114,7 @@ color: #000000;
   color: #ffffff; /* White text color */
 }
 
-.catogries {
+.catogries-buttons {
   display: flex;
   overflow-x: auto; /* Enable horizontal scrolling */
   margin-top: 2px; /* Add some space from the quote */
@@ -123,7 +125,7 @@ color: #000000;
   /* background-color: #0056b3 */
 }
 
-.catogries button {
+.catogries-buttons button {
   white-space: nowrap;
   background-color: transparent;
   color: #000000;
@@ -135,10 +137,60 @@ color: #000000;
   transition: color 0.3s ease, background-color 0.3s ease; /* Add background-color transition */
 }
 
-.catogries button:hover {
+.catogries-buttons button:hover {
   color: white; /* Change text color on hover */
   background-color: black; /* Change background color on hover */
 }
-.catogries button:last-child {
-  margin-right: 0; /* Remove margin from the last button */
+
+.searched-recipes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
+
+/* Style the heading */
+.searched-recipes-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+/* Arrange sections in rows with flex-wrap */
+.searched-recipes-lists {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 20px;
+  width: 100%; /* Take full width */
+  height: fit-content;
+}
+
+/* Style each recipe section */
+.searched-recipes-lists section {
+  background-color: #fff;
+  border: 1px solid #141414;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: fit-content  ;  
+  max-width: 390px;
+}
+
+.searched-recipes-lists section:hover {
+  transform: translateY(-5px);
+}
+
+/* Style the images */
+.searched-recipes-lists img {
+  
+  width: 350px;
+  /* height: 150px;  */ 
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+

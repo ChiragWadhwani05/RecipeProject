@@ -7,36 +7,15 @@ const searchButton = document.querySelector('.search-button');
 const resultRecipes = document.querySelector('.searched-recipes-lists');
 const categoriesButtonsContainer = document.querySelector(
     '.catogries-buttons');
-
+const modal = document.getElementById('modal');
+const closeButton = document.querySelector('.close-button');
+const modalRecipeTitle = document.querySelector('.modal-recipe-title');
+const modalIngredients = document.querySelector('.recipe-ingredients');
+// const modalMethod = document.querySelector('.recipe-method');
 const foodCategories=['Dessert', 'Snacks', 'Main Course',
   'Dinner', 'Chicken', 'Breakfast', 'Cake', 'Pizza',
 ];
-
-
-// const fetchRecipies = async (query) => {
-//   try {
-//     const response = await fetch(
-//         `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
-//     const data = await response.json();
-//     console.log(data);
-//     if (data.meals) {
-//       resultRecipes.innerHTML = ''; // Clear previous results
-
-//       data.meals.forEach((meal) => {
-//         const recipediv = document.createElement('section');
-//         recipediv.innerHTML = `
-//             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-//             <h3>"${meal.strMeal}"</h3>`;
-//         resultRecipes.appendChild(recipediv);
-//       });
-//     } else {
-//       resultRecipes.innerHTML = '<p>No recipes found.</p>';
-//     }
-//   } catch (error) {
-//     console.error('Error fetching recipes:', error);
-//   }
-// };
-
+// let ingredients = null;
 
 const getPlaceholderImageURL = (url) => {
   return '/Images/food-placeholder.webp';
@@ -54,8 +33,18 @@ const renderRecipes = (recipes) => {
         <p>Calories: ${recipe.calories.toFixed(2)}</p>
         </div>`;
     resultRecipes.appendChild(recipediv);
+    // ingredients=recipe
+    console.log(recipe);
+    recipediv.addEventListener('click', () =>{
+      console.log(recipe.label);
+      modal.style.display = 'flex';
+      modalRecipeTitle.textContent = recipe.label;
+      modalIngredients.textContent = `Ingredients: ${recipe.ingredientLines}`;
+      // modalMethod.textContent = `Cooking Instructions: ${recipeMethod}`;
+    });
   });
 };
+
 const fetchEdamamData = async (query) => {
   try {
     const response = await fetch(
@@ -83,16 +72,6 @@ searchButton.addEventListener('click', async (e) => {
   }
 });
 
-
-// searchButton.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   const searchInputValue = searchInput.value.trim();
-//   if (searchInputValue !== '') {
-//     fetchRecipies(searchInputValue);
-//   } else {
-//     resultRecipes.innerHTML = '<p>Please enter a search term.</p>';
-//   }
-// });
 searchInput.addEventListener('keydown', (event) =>{
   if (event.key ==='Enter') {
     searchButton.click();
@@ -119,3 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
   resultRecipes.innerHTML = '';
   searchInput.value = '';
 });
+
+closeButton.addEventListener('click', () => {
+  // Close the modal when the close button is clicked
+  modal.style.display = 'none';
+});
+

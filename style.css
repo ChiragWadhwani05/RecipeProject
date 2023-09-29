@@ -172,7 +172,7 @@ color: #000000;
   margin-top: 7em;
   max-width: 75%;
   height: 75%;
-  overflow: auto;
+  overflow: scroll;
   color: white;
   margin-right: auto;
   /* padding: 200px 0; */

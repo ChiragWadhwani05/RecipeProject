@@ -11,64 +11,60 @@ const modal = document.getElementById('modal');
 const closeButton = document.querySelector('.close-button');
 const modalRecipeTitle = document.querySelector('.modal-recipe-title');
 const modalIngredients = document.querySelector('.recipe-ingredients');
-// const modalMethod = document.querySelector('.recipe-method');
+const modalMethod = document.querySelector('.recipe-method');
 const foodCategories=['Dessert', 'Snacks', 'Main Course',
   'Dinner', 'Chicken', 'Breakfast', 'Cake', 'Pizza',
 ];
-// let ingredients = null;
 
-const getPlaceholderImageURL = (url) => {
-  return '/Images/food-placeholder.webp';
-};
-const renderRecipes = (recipes) => {
-  resultRecipes.innerHTML = '';
-  recipes.forEach((hit) => {
-    const recipe = hit.recipe;
-    const recipediv = document.createElement('section');
-    const imageUrl = recipe.image || getPlaceholderImageURL();
-    recipediv.innerHTML = `
-        <img src="${imageUrl}">
-        <div class="text-area">
-        <h3>${recipe.label}</h3>
-        <p>Calories: ${recipe.calories.toFixed(2)}</p>
-        </div>`;
-    resultRecipes.appendChild(recipediv);
-    // ingredients=recipe
-    console.log(recipe);
-    recipediv.addEventListener('click', () =>{
-      console.log(recipe.label);
-      modal.style.display = 'flex';
-      modalRecipeTitle.textContent = recipe.label;
-      modalIngredients.textContent = `Ingredients: ${recipe.ingredientLines}`;
-      // modalMethod.textContent = `Cooking Instructions: ${recipeMethod}`;
-    });
-  });
-};
 
-const fetchEdamamData = async (query) => {
+const fetchRecipes = async (query) => {
   try {
-    const response = await fetch(
-        `https://api.edamam.com/search?q=${query}&app_id=93509e25&app_key=5b672ecf669bb80353fb097d327d45d5 `);
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
     const data = await response.json();
-    return data;
+
+    if (data.meals) {
+      resultRecipes.innerHTML = ''; // Clear previous results
+      console.log(data.meals);
+      data.meals.forEach((meal) => {
+        const recipediv = document.createElement('section');
+        recipediv.innerHTML = `
+            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+            <h3>${meal.strMeal}</h3>`;
+        resultRecipes.appendChild(recipediv);
+        recipediv.addEventListener('click', () => {
+          modal.style.display = 'flex';
+          modalRecipeTitle.textContent = meal.strMeal;
+          const ingredients = [];
+          for (let i = 1; i <= 20; i++) {
+            const ingredient = meal[`strIngredient${i}`];
+            const measure = meal[`strMeasure${i}`];
+            if (ingredient && measure) {
+              ingredients.push(`${ingredient} - ${measure}`);
+            }
+          }
+          modalIngredients.innerHTML =
+          `<h3>Ingredients</h3>: ${ingredients.join(', ')}`;
+          modalMethod.innerHTML =
+          `<h3>Let's Cook It</h3>: ${meal.strInstructions}`;
+        });
+      });
+    } else {
+      resultRecipes.innerHTML = '<p>No recipes found.</p>';
+    }
   } catch (error) {
-    console.error('Error fetching data from Edamam API:', error);
-    return null;
+    console.error('Error fetching recipes:', error);
+    resultRecipes.innerHTML =
+    '<p>Error fetching recipes. Please try again later.</p>';
   }
 };
+
+
 searchButton.addEventListener('click', async (e) => {
   e.preventDefault();
   const searchInputValue = searchInput.value.trim();
 
   if (searchInputValue !== '') {
-    const edamamData = await fetchEdamamData(searchInputValue);
-    if (edamamData && edamamData.hits.length > 0) {
-      renderRecipes(edamamData.hits);
-    } else {
-      resultRecipes.innerHTML = '<h3>No recipes found.</h3>';
-    }
-  } else {
-    resultRecipes.innerHTML = '<h3>Please enter a search term.</h3>';
+    await fetchRecipes(searchInputValue);
   }
 });
 

@@ -11,6 +11,8 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  /* justify-content: center; */
+  align-items: center;
   position: relative;
 }
 .header {
@@ -61,6 +63,7 @@ body {
   padding: 100px 0;
   display: flex ;
   justify-content: center;
+  position: relative;
   text-align: center; /* Center the content horizontally */
 }
 
@@ -162,13 +165,17 @@ color: #000000;
   display: none;
   position: fixed;
   flex-direction: column;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  /* z-index: 1; */
+  /* left: 0;
+  top: 0; */
+  /* width: 100%; */
+  margin-top: 7em;
+  max-width: 75%;
+  height: 75%;
   overflow: auto;
   color: white;
+  margin-right: auto;
+  /* padding: 200px 0; */
   background-color: rgba(0, 0, 0, 0.889);
   justify-content: space-around;
   align-items: center;

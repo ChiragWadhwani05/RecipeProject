@@ -11,19 +11,18 @@ function fetchEdamamData(query) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(`https://api.edamam.com/search?q=${query}&app_id=93509e25&app_key=5b672ecf669bb80353fb097d327d45d5`);
-            if (!response.ok) {
-                if (response.status === 404) {
-                    return null;
-                }
-                else {
-                    throw new Error('API request failed.');
-                }
-            }
             const data = yield response.json();
-            return data;
+            console.log(data.hits);
+            if (data.hits.length > 0) {
+                return data;
+            }
+            else {
+                return null;
+            }
         }
         catch (error) {
             console.error('Error fetching data from Edamam API:', error);
+            console.log(error);
             throw error;
         }
     });

@@ -21,7 +21,7 @@ searchButton.addEventListener('click', (e) => __awaiter(void 0, void 0, void 0, 
     renderRecipes(searchInputValue);
 }));
 function buttonClick(text) {
-    if (text === "") {
+    if (text !== "") {
         searchInput.value = text;
     }
     searchButton.click();

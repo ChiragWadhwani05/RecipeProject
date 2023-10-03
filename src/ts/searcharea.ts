@@ -1,7 +1,7 @@
 import { renderRecipes } from "./renderrecipes.js";
 
 const searchInput  = document.querySelector('#search-input') as HTMLInputElement;
-const searchButton : HTMLElement = document.querySelector('.search-button') as HTMLButtonElement;
+const searchButton = document.querySelector('.search-button') as HTMLButtonElement;
 
 searchInput.addEventListener('keydown', (event) =>{
     if (event.key ==='Enter') {
@@ -16,7 +16,7 @@ searchButton.addEventListener('click', async (e) => {
 });
 
 function buttonClick(text:string) {
-    if (text==="") {
+    if (text!=="") {
         searchInput.value=text;
     }
     searchButton.click();

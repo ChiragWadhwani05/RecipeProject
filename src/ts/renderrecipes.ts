@@ -1,8 +1,8 @@
+
+import { createRecipeCard, Recipe } from "./card.js";
+import { fetchEdamamData } from "./api.js";
+
 const resultRecipes = document.querySelector('.searched-recipes-lists') as HTMLDivElement;
-
-import { createRecipeCard, Recipe } from "./card";
-import { fetchEdamamData } from "./api";
-
 async function renderRecipes(searchInputValue: string){
     // const data = await fetchEdamamData(searchInputValue);
     try {
@@ -19,7 +19,7 @@ async function renderRecipes(searchInputValue: string){
                 });
             }
         } else {
-            console.error('Recepies Not Found');
+            resultRecipes.innerHTML = `<h1> Recepies Not Found </h1>`;
         }
     } catch (error) {
         console.error('Error fetching or rendering recipes:', error);

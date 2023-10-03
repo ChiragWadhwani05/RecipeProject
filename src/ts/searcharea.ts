@@ -1,7 +1,8 @@
+import { renderRecipes } from "./renderrecipes.js";
+
 const searchInput  = document.querySelector('#search-input') as HTMLInputElement;
 const searchButton : HTMLElement = document.querySelector('.search-button') as HTMLButtonElement;
 
-import { renderRecipes } from "./renderrecipes";
 searchInput.addEventListener('keydown', (event) =>{
     if (event.key ==='Enter') {
         buttonClick("");

@@ -22,7 +22,7 @@ This is a web application that allows users to search for recipes based on ingre
 - **DOM Manipulation:** Manipulated the Document Object Model to update the UI.
 - **Git and GitHub:** Version control and collaboration using Git and GitHub.
 
-## Installation and Usage
+## Usage
 
   https://foodsnippet.netlify.app/
 
@@ -31,7 +31,7 @@ This is a web application that allows users to search for recipes based on ingre
 
 Contributions are welcome! Here's how you can contribute to this project:
 
-1. Fork the repository.
+1. Fork the repository. `https://github.com/ChiragWadhwani05/RecipeProject.git`
 2. Create a new branch: `git checkout -b feature/new-feature`
 3. Commit your changes: `git commit -m 'Add new feature'`
 4. Push to the branch: `git push origin feature/new-feature`

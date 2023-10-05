@@ -5,7 +5,7 @@ interface EdamamData {
 
 async function fetchEdamamData(query: string){
     try {
-        const response = await fetch(`http://localhost:3000/api?keyword=${query}`);
+        const response = await fetch(`https://serverforrecipeproject-production.up.railway.app/api?keyword=${query}`);
         const data = await response.json();
         console.log(data);
         if (data.hits.length>0) {

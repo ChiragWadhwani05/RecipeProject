@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 function fetchEdamamData(query) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield fetch(`http://localhost:3000/api?keyword=${query}`);
+            const response = yield fetch(`https://serverforrecipeproject-production.up.railway.app/api?keyword=${query}`);
             const data = yield response.json();
             console.log(data);
             if (data.hits.length > 0) {

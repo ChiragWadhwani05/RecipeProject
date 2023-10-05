@@ -3,3 +3,9 @@ notes/
 node_modules/
 
 package-lock.json
+
+server/
+
+src/__test/
+
+jest.config.ts

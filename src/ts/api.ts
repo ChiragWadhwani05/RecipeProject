@@ -1,23 +1,21 @@
 
-
 interface EdamamData {
-  hits: any[]; // Adjust the type according to your API response structure
+  hits: any[];
 }
 
 async function fetchEdamamData(query: string){
     try {
-        const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=93509e25&app_key=5b672ecf669bb80353fb097d327d45d5`);
+        const response = await fetch(`http://localhost:3000/api?keyword=${query}`);
         const data = await response.json();
-        console.log(data.hits);
+        console.log(data);
         if (data.hits.length>0) {
             return data;
         } else {
             return null;
         }
     } catch (error) {
-        console.error('Error fetching data from Edamam API:', error);
+        console.error('Error fetching data from Backend:', error);
         console.log(error);
-        
         throw error;
     }
 };

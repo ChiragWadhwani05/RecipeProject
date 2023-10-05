@@ -20,7 +20,7 @@ async function renderRecipes(searchInputValue: string){
             }
         } else {
             // console.log("Recipe Nhai mili");
-            resultRecipes.innerHTML = `<h1> Recepies Not Found </h1>`;
+            resultRecipes.innerHTML = `<h2> Recepies Not Found </h2>`;
             
         }
     } catch (error) {

@@ -26,4 +26,7 @@ function buttonClick(text) {
     }
     searchButton.click();
 }
+document.addEventListener('DOMContentLoaded', () => {
+    searchInput.value = "";
+});
 export { buttonClick };

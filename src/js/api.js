@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 function fetchEdamamData(query) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield fetch(`https://api.edamam.com/search?q=${query}&app_id=93509e25&app_key=5b672ecf669bb80353fb097d327d45d5`);
+            const response = yield fetch(`http://localhost:3000/api?keyword=${query}`);
             const data = yield response.json();
-            console.log(data.hits);
+            console.log(data);
             if (data.hits.length > 0) {
                 return data;
             }
@@ -21,7 +21,7 @@ function fetchEdamamData(query) {
             }
         }
         catch (error) {
-            console.error('Error fetching data from Edamam API:', error);
+            console.error('Error fetching data from Backend:', error);
             console.log(error);
             throw error;
         }

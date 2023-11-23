@@ -1,6 +1,5 @@
 async function fetchRecipeSuggestions(query: string) {
-  const apiKey = '5b672ecf669bb80353fb097d327d45d5'; // Replace with your Adamam API key
-  const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=93509e25&app_key=${apiKey}`;
+  const apiUrl = `https://serverforrecipeproject-production.up.railway.app/api?keyword=${query}`;
 
   try {
     const response = await fetch(apiUrl);

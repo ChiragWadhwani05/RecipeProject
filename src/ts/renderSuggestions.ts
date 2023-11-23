@@ -1,6 +1,7 @@
 import { buttonClick } from './searcharea.js';
 
 const suggestionsContainer = document.getElementById('suggestions-container');
+
 function renderSuggestions(suggestions: any[]) {
   if (suggestionsContainer) {
     suggestionsContainer.innerHTML = '';

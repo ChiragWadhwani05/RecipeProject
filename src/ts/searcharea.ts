@@ -11,15 +11,17 @@ searchInput.addEventListener('keydown', (event) => {
     buttonClick('');
   }
 });
-searchInput.addEventListener('change', async function () {
+searchInput.addEventListener('input', async function () {
   const inputValue = searchInput.value.toLowerCase();
-  console.log(inputValue);
-
   // Fetch recipe suggestions from the Adamam API
   const suggestions = await fetchRecipeSuggestions(inputValue);
 
   // Render suggestions
   renderSuggestions(suggestions);
+});
+
+suggestionsContainer?.addEventListener('click', async (event: MouseEvent) => {
+  suggestionsContainer.style.display = 'hidden';
 });
 
 searchButton.addEventListener('click', async (e) => {

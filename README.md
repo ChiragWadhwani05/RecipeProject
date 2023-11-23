@@ -1,6 +1,6 @@
 # RecipeProject
 
-This is a web application that allows users to search for recipes based on ingredients. Users can enter ingredients they have, and the application will provide recipes that can be made with those ingredients.
+This is a web application that allows users to search for recipes.  
 
 
 ## Live Link

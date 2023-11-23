@@ -15,11 +15,15 @@ const searchButton = document.querySelector('.search-button');
 const suggestionsContainer = document.getElementById('suggestions-container');
 searchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
+        suggestionsContainer.innerHTML = '';
         buttonClick('');
     }
 });
 searchInput.addEventListener('input', function () {
     return __awaiter(this, void 0, void 0, function* () {
+        if (searchInput.value === '') {
+            suggestionsContainer.innerHTML = '';
+        }
         const inputValue = searchInput.value.toLowerCase();
         // Fetch recipe suggestions from the Adamam API
         const suggestions = yield fetchRecipeSuggestions(inputValue);

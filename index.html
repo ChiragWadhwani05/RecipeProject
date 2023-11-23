@@ -31,6 +31,7 @@
             <button type="submit" class="search-button">
                 <i class="fa fa-search"></i>
             </button>
+            <div id="suggestions-container"></div>
         </div>
         <blockquote class="quote-box">
             <h3 class="quote-text">Let's Find A Perfect Recipe For You...</h3>
@@ -53,20 +54,23 @@
         </div>
     </main>
 
-
-    <div id="modal" class="selected-recipe">
-        <button type="button" class="close-button">
-            <i class="fa fa-times"></i>
-        </button>
-        <h1 class="modal-recipe-title">Selected Recipe</h1>
-        <div class="recipe-ingredients">
-            <h3>Ingredients</h3>
+        <div class="modal-container">
+            <div id="modal" class="selected-recipe">
+                <h1 class="modal-recipe-title">Selected Recipe</h1>
+                <button type="button" class="close-button">
+                <i class="fa fa-times"></i>
+                </button>
+            <div class="recipe-ingredients">
+                <h3>Ingredients</h3>
+            </div>
+            <div class="recipe-method">
+                <h3>Let's Cook It</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum labore corporis quibusdam tempora iure excepturi reprehenderit perspiciatis magnam hic, minus exercitationem tempore praesentium vitae repellendus. Doloribus asperiores voluptatum labore hic.
+                Accusamus quaerat in temporibus veniam velit nobis eaque nostrum itaque molestiae animi eos harum non rerum, excepturi architecto unde odio libero quo porro voluptatum. Molestias nobis illo fugiat et dolore.
+                Praesentium suscipit magni iusto iste commodi sequi error minima nesciunt natus, inventore placeat ducimus? Autem quidem quo aliquam voluptate accusantium. Accusamus, mollitia ea. Deleniti hic, ipsam veritatis facere qui nobis!</p>
+            </div>
+            </div>
         </div>
-        <div class="recipe-method">
-            <h3>Let's Cook It</h3>
-        </div>
-    </div>
-    
     <!-- <script type="module" src="/src/js/searcharea.js"></script> -->
     <script type="module" src="/src/js/categoriesButton.js"></script>
 

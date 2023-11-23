@@ -1,7 +1,14 @@
 # RecipeProject
 
-This is a web application that allows users to search for recipes based on ingredients. Users can enter ingredients they have, and the application will provide recipes that can be made with those ingredients.
+This is a web application that allows users to search for recipes.  
 
+
+## Live Link
+
+  https://foodsnippet.netlify.app/
+
+
+  
 ## Features
 
 - **Search Recipes:** Users can search for recipes by entering ingredients or dish names.
@@ -21,10 +28,6 @@ This is a web application that allows users to search for recipes based on ingre
 - **Event Handling:** Used event listeners for user interactions.
 - **DOM Manipulation:** Manipulated the Document Object Model to update the UI.
 - **Git and GitHub:** Version control and collaboration using Git and GitHub.
-
-## Usage
-
-  https://foodsnippet.netlify.app/
 
 
 ## Contributing
